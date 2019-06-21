@@ -11,6 +11,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 
 
+
 class AdminPropertyController extends AbstractController
 {
     
@@ -52,7 +53,8 @@ class AdminPropertyController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()){
             $this->em->persist($property);
-            $this->em->flush();
+            $this->em->flush(); 
+            $this->addFlash('success', 'creér avec succés!!');
             return $this->redirectToRoute('admin.property.index');
 
     }
@@ -79,6 +81,7 @@ class AdminPropertyController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()){
             $this->em->flush();
+            $this->addFlash('success','modifié avec succés !!!');
             return $this->redirectToRoute('admin.property.index');
         }
 
@@ -96,17 +99,15 @@ class AdminPropertyController extends AbstractController
     public function delete(Property $property, Request $request)
     {
 
-        dump($this->isCsrfTokenValid('delete' . $property->getId(), $request->get('_token')));
-        dump($request->get('_token'));
-        dump($property->getId());
-        dump($this->isCsrfTokenValid('delete5' , $request->get('_token'))); 
+        
         if ($this->isCsrfTokenValid('delete' . $property->getId(), $request->get('_token'))){
             $this->em->remove($property);
             $this->em->flush();
+            $this->addFlash('success', 'supprimer avec succés !!!!');
     }     
     
 
-        //return $this->redirectToRoute('admin.property.index');
+        return $this->redirectToRoute('admin.property.index');
     }
 
 }
