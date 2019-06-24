@@ -5,7 +5,7 @@ namespace App\Entity;
 use Serializable;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-
+use Symfony\Component\Routing\Annotation\Route;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
@@ -86,11 +86,11 @@ class User implements UserInterface,\Serializable
 
     /**
      * @return string
-     * 
+     * @since 5.1.0
      */
     public function serialize()
     {
-        return $this->serialize([
+        return serialize([
             $this->id,
             $this->username,
             $this->password
@@ -104,6 +104,7 @@ class User implements UserInterface,\Serializable
      * the string representation of the object.
      * </p>
      * @return void
+     * @since 5.1.0
      */
 
     public function unserialize($serialized)

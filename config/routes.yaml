@@ -6,3 +6,6 @@ home:
 biens:
   path: /
   controller: App\Controller\PropertyController::index
+
+logout:
+  path: /logout
