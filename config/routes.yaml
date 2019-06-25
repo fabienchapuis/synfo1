@@ -9,3 +9,6 @@ biens:
 
 logout:
   path: /logout
+
+option:
+  path: /option
