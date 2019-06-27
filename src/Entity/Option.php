@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use App\Entity\Property;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\OptionRepository")
+ * 
  */
 class Option
 {
@@ -24,7 +26,7 @@ class Option
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\property", inversedBy="options")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Property", mappedBy="options")
      */
     private $properties;
 
