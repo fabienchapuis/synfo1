@@ -118,6 +118,7 @@ class Property
      */
     private $created_at;
 
+<<<<<<< HEAD
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Option", inversedBy="properties")
      */
@@ -128,13 +129,14 @@ class Property
      */
     private $updated_at;
 
+=======
+>>>>>>> parent of c93cedd...  fin tuto 9/16 erreur de route git add .
 
 
 
     public function __construct()
     {
         $this->created_at = new \DateTime();
-        $this->options = new ArrayCollection();
         
     }
     
@@ -314,6 +316,7 @@ class Property
 
         return $this;
     }
+<<<<<<< HEAD
 
     /**
      * @return Collection|Option[]
@@ -407,4 +410,6 @@ class Property
 
         return $this;
     }
+=======
+>>>>>>> parent of c93cedd...  fin tuto 9/16 erreur de route git add .
 }
