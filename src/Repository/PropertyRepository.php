@@ -31,7 +31,7 @@ class PropertyRepository extends ServiceEntityRepository
     public function findAllVisibleQuery(PropertySearch $search): Query
     {
         $query = $this->findVisibleQuery();
-
+        
         if ($search->getMaxPrice() ){
             $query = $query
             ->andwhere('p.price <= :maxprice')
@@ -44,16 +44,17 @@ class PropertyRepository extends ServiceEntityRepository
         }
         
         if ($search->getOptions()->count() > 0){
+            $k =0;
             foreach($search->getOptions() as $k => $option) {
-                dump($option);
+                $k++;
                 $query = $query
                     ->andWhere(":option$k MEMBER OF p.options")
                     ->setParameter(":option$k", $option);
                     
             }
         }
-
-        
+        $lol = $query->getQuery();
+        //dump($lol->getSQL());
         return $query->getQuery();
         
     }

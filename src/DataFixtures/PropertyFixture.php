@@ -6,6 +6,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory;
 use App\Entity\Property;
+use Faker\Provider\DateTime;
 
 class PropertyFixture extends Fixture
 {
@@ -27,8 +28,11 @@ class PropertyFixture extends Fixture
                 ->setCity($faker->city)
                 ->setAddress($faker->address)
                 ->setPostalCode($faker->postcode)
+                ->setUpdatedAt(new \DateTime())
+                ->setLat(lat,10)
+                ->setLng(lng,10)
                 ->setSold( false);
-
+                // ->setFilename($faker->words(3, true));
             $manager->persist($property);
 
 
